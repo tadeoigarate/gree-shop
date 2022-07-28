@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 
-const { Product, User, Order, Orderline } = require('../db.js');
+const { Product, User, Order, Orderline, Envio } = require('../db.js');
 // const { Sequelize, QueryTypes } = require('sequelize');
 
 //==============================================
@@ -204,7 +204,7 @@ router.get('/order/admin/product', (req, res, next) => {
   Order.findAll({
     include: [{model: User}, { model: Product, attributes: ['id','name','stock', 'image', 'price', "category"], through: {
       attributes: ['amount','quantity'] // agregar 'id' si se quiere obtener el id de la orderline 
-    }}]
+    }}, {model: Envio}]
   })
   .then(orders => {
       if (!orders) {

@@ -13,6 +13,7 @@ const authFilters = require("./filtrados");
 const authUser = require("./user");
 const authOrder = require("./order")
 const authMercadoPago = require("./mercadoPago")
+const authEnvio = require("./envio")
 
 
 router.use("/products", authProducts);
@@ -27,5 +28,6 @@ router.use("/tadeo", authOrder)
 
 router.use("/mp", authMercadoPago)
 
+router.use("/envio", authEnvio)
 
 module.exports = router;
