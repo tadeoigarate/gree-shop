@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 const mercadopago = require("mercadopago");
-const { Orderline, Order} = require('../db.js');
+const { Order} = require('../db.js');
 
 const { TOKEN_MP } = process.env;
 
@@ -13,24 +13,21 @@ mercadopago.configure({
   access_token: TOKEN_MP 
 })
 
-router.get("/:orderId", (req, res, next)=>{
+router.post("/:orderId", (req, res, next)=>{
   //const orderId = req.query.id 
   const {orderId} = req.params
 
+  
+
 
   // cargamos el carrido de la bd
-  const carrito = [
-    {title: "Abono Delta 8 NPK (9-0-1) Con aminoácidos 500cc", quantity: 1, price: 10000},
-    {title: "Hortal Granulado 100g", quantity: 1, price: 220},
-    {title: "Hortal Granulado 250g", quantity: 3, price: 310}
-  ]
   // Agrega credenciales
 mercadopago.configure({
     access_token: TOKEN_MP
   });
   
   console.info('ml configured')
-  const items_ml = carrito.map(i => ({
+  const items_ml = req.body.map(i => ({
     title: i.title,
     unit_price: i.price,
     quantity: i.quantity,
