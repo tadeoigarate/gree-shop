@@ -16,14 +16,13 @@ mercadopago.configure({
 router.get("/:orderId", (req, res, next)=>{
   //const orderId = req.query.id 
   const {orderId} = req.params
-  const {jk} = req.body
 
 
   // cargamos el carrido de la bd
   const carrito = [
     {title: "Abono Delta 8 NPK (9-0-1) Con aminoácidos 500cc", quantity: 1, price: 10000},
-    {title: "Hortal Granulado 100g", quantity: 2, price: 220},
-    {title: "Hortal Granulado 250g", quantity: 2, price: 310}
+    {title: "Hortal Granulado 100g", quantity: 1, price: 220},
+    {title: "Hortal Granulado 250g", quantity: 3, price: 310}
   ]
   // Agrega credenciales
 mercadopago.configure({

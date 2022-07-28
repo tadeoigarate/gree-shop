@@ -25,7 +25,7 @@ router.use("/user", authUser);
 
 router.use("/tadeo", authOrder)
 
-router.use("mp", authMercadoPago)
+router.use("/mp", authMercadoPago)
 
 
 module.exports = router;
